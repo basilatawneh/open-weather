@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import {WeatherData} from './open-weather-data'
+import {WeatherData} from '../open-weather-data'
 import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -19,4 +19,7 @@ export class OpenWeatherAPIService {
       });
     });
   }
+ 
+
 }
+  
