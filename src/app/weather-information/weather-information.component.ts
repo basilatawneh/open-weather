@@ -14,13 +14,12 @@ export class WeatherInformationComponent implements OnInit {
   ngOnInit() {
 
    
-    this.openWeatherData.getData().subscribe(data => {
-         
-            console.log(data);
-          });
+    this.openWeatherData.getData().then( data => {
+      console.log(data);
+    });
   }
 
   getinfo(){
-    return this.openWeatherData.getData().subscribe(data => this.data2 = data);
+    // return this.openWeatherData.getData().subscribe(data => this.data2 = data);
   }
 }

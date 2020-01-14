@@ -7,12 +7,16 @@ import { Observable, of } from 'rxjs';
 })
 export class OpenWeatherAPIService {
 
-  private URL = "https://samples.openweathermap.org/data/2.5/forecast?q=Hebron,%20PS&appid=d30d77467a30193c2c22a5a607772a7a";
+  private URL = "";
   private test = "assets/test.json";
   
-  constructor(private http :HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getData(){
-    return this.http.get(this.URL);
+  getData() : Promise<any> {
+    return new Promise ( (resolve,reject) => {
+      this.http.get('https://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=d30d77467a30193c2c22a5a607772a7a',{responseType:"json"}).subscribe( data => {
+        resolve(data);
+      });
+    });
   }
 }
