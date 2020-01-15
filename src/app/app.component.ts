@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'open-weather';
-  t=[1,2,3,4,5]
+  
   getData(){
     
   }

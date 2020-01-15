@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { OpenWeatherAPIService } from './open-weather-api.service';
+import { OpenWeatherAPIService } from './services/open-weather-api.service';
 
 describe('OpenWeatherAPIService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
