@@ -9,7 +9,7 @@ import {OpenWeatherAPIService}from '../services/open-weather-api.service'
 export class CountrySearchComponent implements OnInit {
   public country;
   public filteredCountry;
-  searchTearm: string;
+  name: string = '';
   constructor(private weather: OpenWeatherAPIService) { }
 
   ngOnInit() {

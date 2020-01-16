@@ -1,9 +1,9 @@
 
-    <input type= "text" [(ngModle)]="searchTearm" #search>
+    <input [(ngModel)]="name" type= "text">
     
 
 
-<div *ngFor= "let i of country | fresh:'searchTearm'">
+<div *ngFor= "let i of country | fresh:name">
   <div> {{i.name}}</div>
 
 </div>
