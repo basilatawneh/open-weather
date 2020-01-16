@@ -8,7 +8,7 @@ import { Observable, of } from 'rxjs';
 })
 export class OpenWeatherAPIService {
 
-  private URL = 'https://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=24bd2a9a3ef0ff2c1b1456bd2f15a35f';
+  private URL = 'https://api.openweathermap.org/data/2.5/forecast?q=';
   private test = "assets/test.json";
   private currentGeoUrl = "https://api.openweathermap.org/data/2.5/weather";
   public appid = "24bd2a9a3ef0ff2c1b1456bd2f15a35f"
@@ -21,18 +21,18 @@ export class OpenWeatherAPIService {
   //     });
   //   });//
   // }
- getData(): Observable<WeatherData>{
+ getData(cityName): Observable<WeatherData>{
    
-  return this.http.get<WeatherData>(this.URL/*,{responseType:"json"}*/);
+  return this.http.get<WeatherData>(this.URL+cityName+',ps&appid='+this.appid);
 
  }
-getcurrentGeoWeather(lat, lon){
-let param = new HttpParams()
-.set('lat', lat)
-.set('lan', lon)
-.set('units', 'imperial')
-.set('appid', this.appid)
-//return this.http.get(this.currentGeoUrl, { param })
+getcurrentGeoWeather(): Observable<WeatherData>{
+
+//return this.http.get(this.currentGeoUrl, { param })http://api.openweathermap.org/data/2.5/find?lat=31.527531&lon=35.101830&cnt=20&APPID=24bd2a9a3ef0ff2c1b1456bd2f15a35f
+return this.http.get<WeatherData>("http://api.openweathermap.org/data/2.5/find?lat=31.527531&lon=35.101830&cnt=20&APPID=24bd2a9a3ef0ff2c1b1456bd2f15a35f");
+}
+getJson(): Observable<any>{
+  return this.http.get<any>('assets/country.json');
 }
 }
   

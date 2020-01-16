@@ -7,7 +7,11 @@ import { WeatherInformationComponent } from './weather-information/weather-infor
 import {OpenWeatherAPIService} from './services/open-weather-api.service';
 import { HeaderComponent } from './header/header.component';
 import { DisplayInformationComponent } from './display-information/display-information.component';
-import { WeatherInformationListComponent } from './weather-information-list/weather-information-list.component'
+import { WeatherInformationListComponent } from './weather-information-list/weather-information-list.component';
+import { CountrySearchComponent } from './country-search/country-search.component';
+import { FreshPipe } from './fresh.pipe'
+import {FormsModule} from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,12 +19,16 @@ import { WeatherInformationListComponent } from './weather-information-list/weat
     HeaderComponent,
     DisplayInformationComponent,
     routingComponents,
-    WeatherInformationListComponent
+    WeatherInformationListComponent,
+    CountrySearchComponent,
+    FreshPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule
 
   ],
   providers: [OpenWeatherAPIService],

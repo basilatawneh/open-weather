@@ -1,0 +1,10 @@
+
+    <input type= "text" [(ngModle)]="searchTearm" #search>
+    
+
+
+<div *ngFor= "let i of country | fresh:'searchTearm'">
+  <div> {{i.name}}</div>
+
+</div>
+
