@@ -1,0 +1,35 @@
+
+<!-- <button (click)="geticon()">test</button> -->
+<div class = "cont">
+    <div class= "search-button">
+      <!-- <button class= "search-button">search</button> -->
+      <!-- <a routerLink = "/search">search</a> -->
+    </div>
+    <div class = "current-day">
+      <div class = "current-name-and-temp">
+        <div class = "current-name">
+          {{weatherData?.city.name}}
+        </div>
+        <div class = "current-temp">
+          {{weatherData?.list[0].main.temp}}
+        </div >
+      </div>
+      <div class = "icon">
+        <img src="http://openweathermap.org/img/wn/{{weatherData?.list[0].weather[0].icon}}@2x.png" alt="Smiley face" width="50px">
+      </div>
+    </div >
+    <div >
+       <table  >
+         <tr  class = "row" (click)="onselect(i)" *ngFor="let i of t">
+          <!-- <app-weather-information [weatherinfo]="weatherData?.list[i*8]" [day] = "currentDate.getDay()"></app-weather-information> -->
+        
+          <th><img src="http://openweathermap.org/img/wn/{{weatherData?.list[i*8].weather[0].icon}}@2x.png" alt="Smiley face" width="50px">
+        </th>
+        <th>{{days[(currentDate.getDay()+i) % 7]}}</th>
+         </tr>
+         
+       </table>
+       
+    </div>
+    
+</div>

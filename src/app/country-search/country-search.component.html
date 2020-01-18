@@ -4,7 +4,7 @@
 
 
 <div *ngFor= "let i of country | fresh:name">
-  <div> {{i.name}}</div>
-
+  <!-- <a [routerLink]="['/inf', { 'name': i.name,code:i.code }]"> {{i.name}}</a> -->
+  <a (click)="onSelect(i.name,i.code)" > {{i.name}}</a>
 </div>
 
