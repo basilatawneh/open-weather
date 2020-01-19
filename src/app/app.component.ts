@@ -7,8 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'open-weather';
-  
+  isShow = false;
   getData(){
     
+  }
+  show(){
+    this.isShow = !this.isShow;
   }
 }

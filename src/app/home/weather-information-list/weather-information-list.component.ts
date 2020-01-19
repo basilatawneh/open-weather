@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router'
 import { OpenWeatherAPIService } from '../../services/open-weather-api.service'
-import { parse } from 'querystring';
+
+
 
 @Component({
   selector: 'app-weather-information-list',
@@ -9,33 +10,43 @@ import { parse } from 'querystring';
   styleUrls: ['./weather-information-list.component.scss']
 })
 export class WeatherInformationListComponent implements OnInit {
-  public days = ['a','b','c','d','e','f','g'];
-  t = [0, 1, 2, 3, 4]
+  public days = ['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday'];
+  t = [ 1, 2, 3, 4]
   constructor(private router: Router, private optional: ActivatedRoute, private openWeatherData: OpenWeatherAPIService) { }
   public weatherData;
   public currentDate = new Date();
+  display = "none";
+
+  showModal()
+  {
+    if(this.display =='none')
+      this.display  = 'block';
+      else 
+      this.display = 'none';
+  }
+
   public currentCity = {
     name: "",
     code: "",
     lat: 0,
     lon: 0
   };
+
+
   ngOnInit() {
-    /*this.openWeatherData.getcurrentGeoWeather()
-      .subscribe( data => this.weatherData = data );
-    console.log(this.weatherData);*/
-    console.log(this.currentCity);
+  
     this.currentDate = new Date();
-    this.getUrlParam();
     if (!this.currentCity.name ) {
       this.getCurrentPos();
-      this.getWeatherByCoordinat(this.currentCity.lat, this.currentCity.lon);
+     this.getWeatherByCoordinat(this.currentCity.lat, this.currentCity.lon);
     } else {
       this.getWeatherByCityName(this.currentCity.name, this.currentCity.code);
     }
+    console.log(this.weatherData)
   }
   onselect(id) {
     this.router.navigate(['/details', id]);
+    
   }
   getWeatherByCityName(cityName, countryCode) {
     const param = {
@@ -43,28 +54,35 @@ export class WeatherInformationListComponent implements OnInit {
     }
     this.openWeatherData.getData(param)
       .subscribe(data => {
+      if(data){
       this.weatherData = data;
-        console.log(data);
+      this.openWeatherData.setWeatherData(data);
+      }
       });
-
+     
   }
   getWeatherByCoordinat(lat, lon) {
     const param = {
       'lat': lat,
       'lon': lon
+      // 31.5076565
+      // 35.091069
     }
     this.openWeatherData.getData(param)
       .subscribe(data => {
       this.weatherData = data;
-        console.log(data);
+      this.openWeatherData.setWeatherData(data);
+        //console.log(data);
       });
 
   }
 
-  getUrlParam() {
-    this.currentCity.name = (this.optional.snapshot.paramMap.get('name'));
-    this.currentCity.code = (this.optional.snapshot.paramMap.get('code'));
-    console.log(this.currentCity);
+  getLocationData(data) {
+    this.currentCity.name = data.name;
+    this.currentCity.code = data.code;
+    this.display = "none";
+    this.getWeatherByCityName(data.name, data.code);
+    
   }
 
 
@@ -73,7 +91,9 @@ export class WeatherInformationListComponent implements OnInit {
       navigator.geolocation.watchPosition(pos => {
         this.currentCity.lat = pos.coords.latitude;
         this.currentCity.lon = pos.coords.longitude;
+        this.getWeatherByCoordinat(pos.coords.latitude,pos.coords.longitude)
       });
     }
   }
+
 }

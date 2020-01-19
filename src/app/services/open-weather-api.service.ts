@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http'
 import {WeatherData} from '../open-weather-data'
 import { Observable, of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,18 @@ export class OpenWeatherAPIService {
   public appid = "24bd2a9a3ef0ff2c1b1456bd2f15a35f"
   constructor(private http: HttpClient) { }
   public fdata;
-
+  weatherData: any;
+  getWeatherData(){
+    // console.log('get')
+    // console.log(this.weatherData);
+    return this.weatherData;
+    
+  }
+  setWeatherData(data){
+    // console.log('set')
+    // console.log(this.weatherData);
+    this.weatherData = data;
+  }
  getData(param1): Observable<WeatherData>{
    const param2 = {
  

@@ -1,4 +1,22 @@
-<p>display-information works! {{dataid}}</p>
+<!-- <p>display-information works! {{dataid}}</p>
 <a (click)="prev()">prev</a>
-<a (click)="next()">next</a>
-<button routerLink = "">home</button>
+<a (click)="next()">next</a> -->
+
+<div class="cont">
+ 
+  <div class="current-day">
+    <div class="current-name-and-temp">
+      <div class="current-name">
+        {{weatherData?.city.name}}
+      </div>
+      <div class="current-temp">
+        <span *ngIf="(weatherDatainfo?.list[0].main.temp - 273.15) > 0">+</span>
+        {{(weatherDatainfo?.list[0].main.temp - 273.15)| number: 2.0-2}}
+
+      </div>
+    </div>
+    <div class="current-icon">
+      <img src="http://openweathermap.org/img/wn/{{weatherDatainfo?.list[0].weather[0].icon}}@2x.png" alt="Smiley face">
+    </div>
+  </div>
+  <button routerLink = "">home</button>

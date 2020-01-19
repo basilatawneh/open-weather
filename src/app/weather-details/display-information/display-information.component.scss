@@ -1,0 +1,26 @@
+
+.current-day {
+    display:flex;
+    justify-content: space-around;
+    .current-name-and-temp{
+        color: #b8bccb;
+        font-size: 32px;
+        margin: 5% 0 0 10% ;
+      
+        .current-name {
+            margin-bottom: 20px;
+        }
+        .current-temp {
+            font-size: 40px;
+            font-weight: bold;
+        }
+    }
+    .current-icon {
+        img {
+        width: 157px;
+        height: auto;
+        }
+       
+    }
+    
+}

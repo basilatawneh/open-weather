@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 import {OpenWeatherAPIService}from '../services/open-weather-api.service'
 import {Router,NavigationExtras } from '@angular/router'
 @Component({
@@ -9,7 +9,9 @@ import {Router,NavigationExtras } from '@angular/router'
 export class CountrySearchComponent implements OnInit {
   public country;
   public filteredCountry;
+  display = 'none';
   name: string = '';
+  @Output() getSelectedCity = new EventEmitter<any>();
   constructor(private weather: OpenWeatherAPIService, private router: Router) { }
 
   ngOnInit() {
@@ -22,8 +24,11 @@ export class CountrySearchComponent implements OnInit {
       name: name,
       code: code
     }
-    this.router.navigate(["home",{
-      name: name,
-      code: code}]);
+    this.getSelectedCity.emit(data);
+    if(this.display =='none')
+        this.display = "block";
+        else
+        this.display = "none";
   }
+  
 }

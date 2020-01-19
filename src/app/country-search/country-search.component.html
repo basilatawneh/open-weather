@@ -1,10 +1,10 @@
-
-    <input [(ngModel)]="name" type= "text">
+<div >
+  <input [(ngModel)]="name" type= "text">
     
-
-
-<div *ngFor= "let i of country | fresh:name">
-  <!-- <a [routerLink]="['/inf', { 'name': i.name,code:i.code }]"> {{i.name}}</a> -->
-  <a (click)="onSelect(i.name,i.code)" > {{i.name}}</a>
+  <div *ngFor= "let i of country | fresh:name">
+    <!-- <a [routerLink]="['/inf', { 'name': i.name,code:i.code }]"> {{i.name}}</a> -->
+    <a (click)="onSelect(i.name,i.code)" > {{i.name}}</a>
+  </div>
 </div>
+
 
