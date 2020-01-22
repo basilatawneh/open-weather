@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {ActivatedRoute ,Router} from '@angular/router'
-import {OpenWeatherAPIService } from './../../services/open-weather-api.service'
+import {OpenWeatherAPIService } from './../../../services/open-weather-api.service'
 @Component({
   selector: 'app-display-information',
   templateUrl: './display-information.component.html',
@@ -13,7 +13,7 @@ export class DisplayInformationComponent implements OnInit {
   ngOnInit() {
     this.dataid = parseInt(this.route.snapshot.paramMap.get('id'));
     this.weatherDatainfo = this.OpenWeather.getWeatherData();
-    console.log(this.weatherDatainfo);
+    console.log(this.weatherDatainfo.list[this.dataid].main.temp - 273.15);
   }
   prev(){
     this.dataid--;

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router'
-import { OpenWeatherAPIService } from '../../services/open-weather-api.service'
+import { OpenWeatherAPIService } from '../../../../services/open-weather-api.service'
 
 
 
@@ -34,15 +34,17 @@ export class WeatherInformationListComponent implements OnInit {
 
 
   ngOnInit() {
-  
+    this.currentCity = this.openWeatherData.getCurrentCity();
+    this.weatherData = this.openWeatherData.getWeatherData();
+    console.log("HHHHHHHHH",this.currentCity);
     this.currentDate = new Date();
-    if (!this.currentCity.name ) {
+    if (!this.currentCity.name && !this.currentCity.lat ) {
       this.getCurrentPos();
-     this.getWeatherByCoordinat(this.currentCity.lat, this.currentCity.lon);
+     //this.getWeatherByCoordinat(this.currentCity.lat, this.currentCity.lon);
     } else {
       this.getWeatherByCityName(this.currentCity.name, this.currentCity.code);
     }
-    console.log(this.weatherData)
+
   }
   onselect(id) {
     this.router.navigate(['/details', id]);
@@ -80,6 +82,7 @@ export class WeatherInformationListComponent implements OnInit {
   getLocationData(data) {
     this.currentCity.name = data.name;
     this.currentCity.code = data.code;
+    this.openWeatherData.setCurrentCity(this.currentCity);
     this.display = "none";
     this.getWeatherByCityName(data.name, data.code);
     
@@ -91,6 +94,7 @@ export class WeatherInformationListComponent implements OnInit {
       navigator.geolocation.watchPosition(pos => {
         this.currentCity.lat = pos.coords.latitude;
         this.currentCity.lon = pos.coords.longitude;
+        this.openWeatherData.setCurrentCity(this.currentCity);
         this.getWeatherByCoordinat(pos.coords.latitude,pos.coords.longitude)
       });
     }

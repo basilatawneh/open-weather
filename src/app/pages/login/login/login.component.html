@@ -1,0 +1,18 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <!-- {{loginForm.value | json}} -->
+    <div>Email</div>
+    <div class="form-feiled">
+        <input type="email" name="email" [(ngModel)]="loginData.email">
+    </div>
+    <div>password</div>
+    <div class="form-feiled">
+        <input type="password" name="password" [(ngModel)]="loginData.password">
+    </div>
+    <div class="submit-button">
+        <button type="submit"> submit</button>
+    </div>
+   
+
+    </form>
+</div>

@@ -16,6 +16,23 @@ export class OpenWeatherAPIService {
   constructor(private http: HttpClient) { }
   public fdata;
   weatherData: any;
+  public currentCity = {
+    name: "",
+    code: "",
+    lat: 0,
+    lon: 0
+  };
+  getCurrentCity(){
+    // console.log('get')
+    // console.log(this.weatherData);
+    return this.currentCity;
+    
+  }
+  setCurrentCity(data){
+    // console.log('set')
+    // console.log(this.weatherData);
+    this.currentCity = data;
+  }
   getWeatherData(){
     // console.log('get')
     // console.log(this.weatherData);

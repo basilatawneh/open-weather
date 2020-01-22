@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
-import {OpenWeatherAPIService}from '../services/open-weather-api.service'
+import {OpenWeatherAPIService}from '../../services/open-weather-api.service'
 import {Router,NavigationExtras } from '@angular/router'
 @Component({
   selector: 'app-country-search',
