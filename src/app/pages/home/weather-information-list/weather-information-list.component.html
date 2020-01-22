@@ -3,7 +3,7 @@
 <!-- <app-weather-information></app-weather-information> -->
 <div (click)='showModal()' class="search-button">
   <!-- <button class= "search-button">search</button> -->
-  <a >search</a>
+  <a >Location</a>
 </div>
 
 <app-country-search [ngStyle]="{'display':display}" (getSelectedCity)='getLocationData($event)' ></app-country-search>
@@ -17,7 +17,7 @@
       </div>
       <div class="current-temp">
         <span *ngIf="(weatherData?.list[0].main.temp - 273.15) > 0">+</span>
-        {{(weatherData?.list[0].main.temp - 273.15)| number: 2.0-2}}
+        {{((weatherData?.list[0].main.temp - 273.15)| number: 2.0-2)/1}}
 
       </div>
     </div>
@@ -25,6 +25,48 @@
       <img src="http://openweathermap.org/img/wn/{{weatherData?.list[0].weather[0].icon}}@2x.png" alt="Smiley face">
     </div>
   </div>
+  <div class="current-day-times" >
+    <div class="current-day-details" *ngFor="let i of t">
+      <div class="times">
+        {{getDate(weatherData?.list[i].dt_txt)}}
+      </div>
+      <div class="temp">
+        {{((weatherData?.list[i].main.temp - 273.15)| number: '2.0-2')/1}}
+
+      </div >
+      <div class="icon">
+        <img src="http://openweathermap.org/img/wn/{{weatherData?.list[i].weather[0].icon}}@2x.png" alt="Smiley face"
+          width="50px">
+      </div>
+    </div>
+</div>
+<div class="weather-details">
+  <div >
+    <div>
+      humidity
+    </div>
+    <div>
+    {{weatherData?.list[0].main.humidity}}
+    </div>
+  </div>
+  <div>
+    <div>
+        temp_min
+      </div>
+      <div>
+      {{weatherData?.list[0].main.temp_min}}
+      </div>
+  </div>
+  <div>
+    <div>
+      temp_max
+    </div>
+    <div>
+    {{weatherData?.list[0].main.temp_max}}
+    </div>
+  </div>   
+  
+</div>
   <div class="other-days">
     <div class="next-day"  *ngFor="let i of t">
       <a  (click)="onselect(i)">?</a>

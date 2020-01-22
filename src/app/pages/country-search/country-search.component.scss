@@ -3,6 +3,53 @@
     z-index: 2131234;
     position: absolute;
     color: white;
-    background: #069;
+    background: rgb(89, 134, 218);
     display: none;
+}
+img{
+  width: 50px;
+}
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    
+    //background-image: url('../../../assets/r.png');
+    // background-color: red;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 10px;
+    width: 100%;
+  }
+
+.countries {
+  font-size: 30px;
+    padding: 10px;
+}
+.country-continer{
+  color: white;
+  overflow: scroll;
+  height: 540px;
+  width: auto;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }

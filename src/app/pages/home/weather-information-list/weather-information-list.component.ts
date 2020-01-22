@@ -44,7 +44,7 @@ export class WeatherInformationListComponent implements OnInit {
     } else {
       this.getWeatherByCityName(this.currentCity.name, this.currentCity.code);
     }
-
+    console.log(this.weatherData)
   }
   onselect(id) {
     this.router.navigate(['/details', id]);
@@ -58,7 +58,9 @@ export class WeatherInformationListComponent implements OnInit {
       .subscribe(data => {
       if(data){
       this.weatherData = data;
+      console.log(this.weatherData);
       this.openWeatherData.setWeatherData(data);
+
       }
       });
      
@@ -87,7 +89,10 @@ export class WeatherInformationListComponent implements OnInit {
     this.getWeatherByCityName(data.name, data.code);
     
   }
-
+  getDate(date){
+    let newDate = new Date(date);
+    return (newDate.getHours()+":00");
+  }
 
   getCurrentPos() {
     if ("geolocation" in navigator) {

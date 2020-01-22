@@ -10,10 +10,15 @@ export class DisplayInformationComponent implements OnInit {
   constructor(private route: ActivatedRoute, private ro:Router, private OpenWeather: OpenWeatherAPIService) { }
   public dataid:number;
   weatherDatainfo:any ;
+  t=[1,2,3,4];
   ngOnInit() {
     this.dataid = parseInt(this.route.snapshot.paramMap.get('id'));
     this.weatherDatainfo = this.OpenWeather.getWeatherData();
     console.log(this.weatherDatainfo.list[this.dataid].main.temp - 273.15);
+  }
+  getDate(date){
+    let newDate = new Date(date);
+    return (newDate.getHours()+":00");
   }
   prev(){
     this.dataid--;

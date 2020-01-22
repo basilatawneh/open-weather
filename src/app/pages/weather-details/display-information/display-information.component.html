@@ -19,4 +19,48 @@
       <img src="http://openweathermap.org/img/wn/{{weatherDatainfo?.list[dataid*8].weather[0].icon}}@2x.png" alt="Smiley face">
     </div>
   </div>
-  <button routerLink = "">home</button>
+  <div class="current-day-times" >
+    <div class="current-day-details" *ngFor="let i of t">
+      <div class="times">
+        {{getDate(weatherDatainfo?.list[dataid+i].dt_txt)}}
+      </div>
+      <div class="temp">
+        {{((weatherDatainfo?.list[i].main.temp - 273.15)| number: '2.0-2')/1}}
+
+      </div >
+      <div class="icon">
+        <img src="http://openweathermap.org/img/wn/{{weatherDatainfo?.list[dataid+i].weather[0].icon}}@2x.png" alt="Smiley face"
+          width="50px">
+      </div>
+    </div>
+</div>
+<div class="weather-details">
+  <div >
+    <div>
+      humidity
+    </div>
+    <div>
+    {{weatherDatainfo?.list[dataid].main.humidity}}
+    </div>
+  </div>
+  <div>
+    <div>
+        temp_min
+      </div>
+      <div>
+      {{weatherDatainfo?.list[dataid].main.temp_min}}
+      </div>
+  </div>
+  <div>
+    <div>
+      temp_max
+    </div>
+    <div>
+    {{weatherDatainfo?.list[dataid].main.temp_max}}
+    </div>
+  </div>   
+  
+</div>
+<div class="home-button">
+  <button [routerLink] = "['/home']">home</button>
+</div>

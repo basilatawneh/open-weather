@@ -1,18 +1,25 @@
 <div class="container">
-    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-    <!-- {{loginForm.value | json}} -->
-    <div>Email</div>
-    <div class="form-feiled">
-        <input type="email" name="email" [(ngModel)]="loginData.email">
+    <div class="form-part">
+        <div class="logo">
+            <img src="../../../../assets/logo.png">
+        </div>
+      
+        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <!-- {{loginForm.value | json}} -->
+        <div>Email</div>
+        <div class="form-feiled">
+            <input type="email" name="email" [(ngModel)]="loginData.email" required>
+        </div>
+        <div>password</div>
+        <div class="form-feiled">
+            <input type="password" name="password" [(ngModel)]="loginData.password" required>
+        </div>
+        <div class="submit-button">
+            <button type="submit"> Login</button>
+        </div>
+       
+    
+        </form>
     </div>
-    <div>password</div>
-    <div class="form-feiled">
-        <input type="password" name="password" [(ngModel)]="loginData.password">
-    </div>
-    <div class="submit-button">
-        <button type="submit"> submit</button>
-    </div>
-   
-
-    </form>
+    
 </div>

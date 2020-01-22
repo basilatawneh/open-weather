@@ -24,3 +24,40 @@
     }
     
 }
+.current-day-times{
+    display: flex;
+    justify-content: space-around;
+    .times{
+        color:white;
+    }
+
+    .current-day-details{
+        align-items: center;
+    }
+    .icon{
+        color: white;
+    }
+    .temp {
+        color: white;
+    }
+
+   
+}
+.weather-details{
+ color:white;
+ display: flex;
+ div{
+     margin: 5px;
+ }       
+}
+.home-button {
+    text-align: center;
+    button{
+        background: #2a66d7;
+        padding: 10px;
+        
+    font-size: 32px;
+    color: white;
+    border-radius: 20px;
+    }
+}
