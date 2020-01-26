@@ -30,5 +30,13 @@ export class CountrySearchComponent implements OnInit {
         else
         this.display = "none";
   }
-  
+  onScroll(e){
+    console.log(e);
+  }
+  scrollUp(){
+    console.log("up")
+  }
+  scrollDown(){
+    console.log("own")
+  }
 }

@@ -1,6 +1,6 @@
 <div >
-  <input [(ngModel)]="name" type= "text" placeholder="Search">
-  <div  class="country-continer">
+  <input [(ngModel)]="name" type= "text" placeholder="Search" appHeader scroll-up="scrollUp()" scroll-down="scrollDown()">
+  <div  class="country-continer" >
     <div *ngFor= "let i of country | fresh:name">
       <!-- <a [routerLink]="['/inf', { 'name': i.name,code:i.code }]"> {{i.name}}</a> -->
       <a (click)="onSelect(i.name,i.code)" class="countries"> {{i.name}}</a>

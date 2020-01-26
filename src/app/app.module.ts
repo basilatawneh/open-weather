@@ -10,7 +10,8 @@ import { CountrySearchComponent } from './pages/country-search/country-search.co
 import { FreshPipe } from './Pipe/fresh.pipe'
 import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import {LoginComponent} from './pages/login/login/login.component'
+import {LoginComponent} from './pages/login/login/login.component';
+import { HeaderDirective } from './header.directive'
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import {LoginComponent} from './pages/login/login/login.component'
     WeatherInformationListComponent,
     CountrySearchComponent,
     LoginComponent,
-    FreshPipe
+    FreshPipe,
+    HeaderDirective
   ],
   imports: [
     BrowserModule,
