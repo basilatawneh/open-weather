@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  weatherData: Object,
+  URL: 'https://api.openweathermap.org/data/2.5/forecast?',
+  iconURL: "http://openweathermap.org/img/wn/",
+  appid: "24bd2a9a3ef0ff2c1b1456bd2f15a35f",
 };
 
 /*

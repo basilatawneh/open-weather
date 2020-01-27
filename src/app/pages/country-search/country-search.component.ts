@@ -15,7 +15,7 @@ export class CountrySearchComponent implements OnInit {
   constructor(private weather: OpenWeatherAPIService, private router: Router) { }
 
   ngOnInit() {
-    this.weather.getJson().subscribe(data => this.country = data);
+    this.weather.getJson('assets/country.json').subscribe(data => this.country = data);
 
   }
   onSelect(name,code){
