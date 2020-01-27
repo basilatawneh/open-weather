@@ -6,24 +6,28 @@
       
         <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
         <!-- {{loginForm.value | json}} -->
-        <div>Email</div>
-        <div  class="form-feiled">
+     
+        <div  class="form-feiled" >
+            <div>Email</div>
             <input type="email" #email="ngModel" name="userEmail" [class.is-not-valid]="email.invalid && email.touched" [email]="true" [(ngModel)]="loginData.email" required>
         </div>
         
         <small class="error" [class.hide]="email.valid || !email.touched">the email is required</small>
 
-        <div>password</div>
+        
         <div class="form-feiled">
+            <div>password</div>
             <input type="password" #password="ngModel" name="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{5,11}" [class.is-not-valid]="password.invalid && password.touched" [(ngModel)]="loginData.password" required>
         </div>
         <small class="error" [class.hide]="password.valid || !password.touched">the password is required</small>
         <div class="submit-button">
-            <button type="submit"> Login</button>
+            <button [disabled]="loginForm.form.invalid" type="submit"> Login</button>
         </div>
        
     
         </form>
+        <div class="error" *ngIf="!pass && appear"> username or password is invaled </div>
+        <div *ngIf="pass && appear"> welcome </div>
     </div>
     
 </div>

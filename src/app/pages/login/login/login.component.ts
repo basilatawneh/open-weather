@@ -7,7 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  
+  pass = false;
+  appear = false;
   loginData = {
     email: "",
     password: ""
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
   users = [
     {
       email: "basil@test.ps",
-      password: "12345678"
+      password: "1Qa@1233"
     }
   ]
   constructor(private router: Router) { }
@@ -27,9 +29,19 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     for (let user of this.users){
       if(user.password == this.loginData.password && user.email && this.loginData.password){
-        this.router.navigate(['home']);
+        this.pass = true;
+        break;
       }
 
     }
+    this.appear = true;
+    setTimeout(()=>{
+      this.appear = false;
+      if(this.pass){
+        this.pass = false;
+        this.router.navigate(['home']);
+      }
+      
+    },1000);
   }
 }

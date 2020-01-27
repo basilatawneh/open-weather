@@ -36,7 +36,6 @@ export class WeatherInformationListComponent implements OnInit {
   ngOnInit() {
     this.currentCity = this.openWeatherData.getCurrentCity();
     this.weatherData = this.openWeatherData.getWeatherData();
-    console.log("HHHHHHHHH",this.currentCity);
     this.currentDate = new Date();
     if (!this.currentCity.name && !this.currentCity.lat ) {
       this.getCurrentPos();
